@@ -6,7 +6,7 @@ abstract class BooksState {}
 class BooksInitial extends BooksState {}
 class BooksLoadingState extends BooksState {}
 class BooksSuccessState extends BooksState {
-  List<VolumeInfo>list;
+  List<Item>list;
 
   BooksSuccessState({required this.list});
 }

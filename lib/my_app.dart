@@ -1,3 +1,4 @@
+import 'package:books/features/figma/figma_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'features/splash/splash_screen.dart';
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
-      home: SplashScreen(),
+      home: FigmaScreen(),
 
     );
   }

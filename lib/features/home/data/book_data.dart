@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import '../model/home_model.dart';
 
 class BookData {
-  Future<List<VolumeInfo>> getBookData() async {
+  Future<List<Item>> getBookData() async {
     final Dio dio = Dio();
     Response response = await dio.get(
       'https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&Sorting=newest%20&q=computer%20science',
@@ -12,10 +12,10 @@ class BookData {
     try {
       if (response.statusCode == 200) {
         List bookItem = jsonData["items"];
-        List<VolumeInfo> map =
-        bookItem.map((e) => VolumeInfo.fromJson(e)).toList();
-
-        return map;
+        print(response.data);
+        List<Item> list = bookItem.map((e) => Item.fromJson(e)).toList();
+        print(list);
+        return list;
       } else {
         throw Exception("error");
       }

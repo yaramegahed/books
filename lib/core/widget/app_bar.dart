@@ -8,12 +8,12 @@ AppBar appBar(
     List<Widget>? actions,
     void Function()? onPressed}) {
   return AppBar(
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.blueGrey,
     centerTitle: true,
     title: Text(
       title,
       style: TextStyle(
-          color: Colors.black, fontSize: fontSize, fontWeight: FontWeight.bold),
+          color: Colors.white, fontSize: fontSize, fontWeight: FontWeight.bold),
     ),
     leading: Row(
       children: [

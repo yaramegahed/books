@@ -10,7 +10,6 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +18,12 @@ class HomeScreen extends StatelessWidget {
           create: (context) => BooksCubit()..getBookCubit(),
           child: BlocBuilder<BooksCubit, BooksState>(
             builder: (context, state) {
+              if (state is BooksLoadingState) {
+                return const Center(child: CircularProgressIndicator());
+              }
               if (state is BooksSuccessState) {
+                print("length\t" * 7);
+                print(state.list.length);
                 return GridView.count(
                   crossAxisCount: 2,
                   mainAxisSpacing: 10,
@@ -27,14 +31,15 @@ class HomeScreen extends StatelessWidget {
                   childAspectRatio: 0.7,
                   children: List.generate(state.list.length, (index) {
                     final model = state.list[index];
+                    // print(model.description);
                     return CardHome(
-                      info: model,
+                      info: model.volumeInfo,
                     );
                   }),
                 );
+              } else {
+                return const CircularProgressIndicator();
               }
-
-              return CircularProgressIndicator();
             },
           ),
         ));
